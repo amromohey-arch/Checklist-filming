@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>618 Media - Production Checklist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    :root {
+        --orange: #E5421A;
+        --dark: #1A1A1A;
+        --cream: #F4F3F0;
+        --grey: #555555;
+        --border: #E0DDD8;
+    }
+
+    html, body {
+        background-color: var(--cream) !important;
+        color: var(--dark);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        line-height: 1.6;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid var(--border);
+        padding-bottom: 20px;
+    }
+
+    .header-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+
+    .logo {
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--dark);
+    }
+
+    h1 {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 8px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+        color: var(--grey);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+    }
+
+    .progress-container {
+        margin-bottom: 20px;
+    }
+
+    .progress-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--grey);
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 6px;
+        background-color: var(--border);
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background-color: var(--orange);
+        transition: width 0.3s ease;
+        border-radius: 3px;
+    }
+
+    .category {
+        margin-bottom: 32px;
+    }
+
+    .category-header {
+        background-color: var(--dark);
+        color: #ffffff;
+        padding: 12px 16px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .category-count {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0;
+        text-transform: none;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 2px 8px;
+        border-radius: 12px;
+    }
+
+    .checklist-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border);
+        background-color: #ffffff;
+        transition: background-color 0.2s ease;
+    }
+
+    .checklist-item:last-child {
+        border-bottom: none;
+        border-radius: 0 0 4px 4px;
+    }
+
+    .checklist-item:first-child {
+        border-radius: 4px 4px 0 0;
+    }
+
+    .checklist-item input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        margin-right: 14px;
+        margin-top: 2px;
+        cursor: pointer;
+        accent-color: var(--orange);
+    }
+
+    .checklist-item input[type="checkbox"]:checked + label {
+        color: var(--grey);
+        text-decoration: line-through;
+    }
+
+    .checklist-item label {
+        cursor: pointer;
+        flex: 1;
+        font-size: 14px;
+        color: var(--dark);
+        transition: color 0.2s ease;
+        user-select: none;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 2px solid var(--border);
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .btn-reset {
+        background-color: var(--border);
+        color: var(--dark);
+    }
+
+    .btn-reset:hover {
+        background-color: #d4cfc7;
+    }
+
+    .btn-complete {
+        background-color: var(--orange);
+        color: #ffffff;
+    }
+
+    .btn-complete:hover {
+        background-color: #c93a14;
+        transform: translateY(-1px);
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px solid var(--border);
+        color: var(--grey);
+        font-size: 12px;
+    }
+
+    .footer-logo {
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--dark);
+        margin-bottom: 6px;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 16px;
+        }
+
+        h1 {
+            font-size: 22px;
+        }
+
+        .category-header {
+            font-size: 13px;
+        }
+
+        .checklist-item {
+            padding: 10px 12px;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+        button {
+            width: 100%;
+        }
+    }
+
+    .completion-message {
+        background-color: var(--orange);
+        color: #ffffff;
+        padding: 16px;
+        border-radius: 4px;
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: 600;
+        display: none;
+    }
+
+    .completion-message.show {
+        display: block;
+        animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <span class="logo">618 MEDIA</span>
+            </div>
+            <h1>Production Readiness</h1>
+            <p class="subtitle">Complete Checklist</p>
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Progress</span>
+                    <span><strong id="progress-count">0</strong> of <strong id="total-count">0</strong></span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </header>
+
+```
+    <div class="completion-message" id="completion-message">
+        ✓ All items checked! You're production ready.
+    </div>
+
+    <div id="checklist-container"></div>
+
+    <div class="action-buttons">
+        <button class="btn-reset" onclick="resetChecklist()">Reset All</button>
+        <button class="btn-complete" onclick="markAllComplete()">Mark All Done</button>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-logo">618 Media</div>
+    <p>Production with Purpose | www.618media.com.au</p>
+</footer>
+
+<script>
+    const checklistData = {
+        'CAMERA & RECORDING': [
+            'Primary camera (power on test)',
+            'Backup camera (power on test)',
+            'All lenses cleaned (front & rear)',
+            'Memory cards formatted in camera',
+            'Memory cards free space confirmed (>95% available)',
+            'Camera backups (2x extra SD cards packed)',
+            'ISO/Aperture/Shutter presets confirmed',
+            'Monitor brightness & color calibration checked'
+        ],
+        'AUDIO & MICROPHONES': [
+            'Wireless mic systems tested (range check)',
+            'Lavalier mic clipped & levels tested',
+            'Audio cables (XLR) tested & coiled',
+            'Audio recorder (if separate) batteries charged',
+            'Windscreens on all mics',
+            'Headphones working & volume tested'
+        ],
+        'POWER & BATTERIES': [
+            'Camera batteries (all 3) fully charged',
+            'Battery charger packed in vehicle',
+            'Wireless mic batteries charged',
+            'Audio recorder batteries charged',
+            'Backup power bank (5000mAh+) for phones',
+            'Charging cables (USB-C, Lightning) packed'
+        ],
+        'LIGHTING & GRIP': [
+            'LED panels tested & working',
+            'Tripods & stands packed',
+            'Gimbal balanced & tested',
+            'ND filters packed',
+            'Lens cloths & blower brush packed',
+            'Gaff tape & electrical tape'
+        ],
+        'VEHICLE & RIGGING': [
+            'Hood rig equipment packed & secure',
+            'Suction cup mounts tested',
+            'Safety lines & straps packed',
+            'Vehicle fuel tank (at least half full)',
+            'Vehicle insurance & registration current'
+        ],
+        'BACKUP & STORAGE': [
+            'Portable SSD drive packed (for offload)',
+            'Backup drive (2x redundancy)',
+            'Card reader & USB cables',
+            'Laptop/computer ready for review'
+        ],
+        'PERSONAL & ESSENTIALS': [
+            'Water bottles (3+ liters total)',
+            'Snacks (energy bars, nuts, fruit)',
+            'Portable phone chargers',
+            'Sunscreen & hat',
+            'First aid kit',
+            'Insect repellent',
+            'Medications (if needed)',
+            'IDs & insurance cards'
+        ],
+        'LOGISTICS & DOCUMENTATION': [
+            'Shoot plan printed & in vehicle',
+            'Location addresses & parking info',
+            'Google Maps links tested',
+            'Call sheet with talent & crew numbers',
+            'Release forms (if needed)',
+            'Production insurance info',
+            'Walkie-talkies (if available) charged'
+        ],
+        'DAY BEFORE DEPARTURE': [
+            'All gear tested & working',
+            'Vehicle serviced & checked',
+            'Crew briefed on timeline & locations',
+            'Weather forecast checked',
+            'Gear packed in vehicle by 6:00 PM'
+        ]
+    };
+
+    function initChecklist() {
+        const container = document.getElementById('checklist-container');
+        let totalItems = 0;
+
+        Object.keys(checklistData).forEach(category => {
+            const items = checklistData[category];
+            totalItems += items.length;
+
+            const categoryDiv = document.createElement('div');
+            categoryDiv.className = 'category';
+
+            const categoryHeader = document.createElement('div');
+            categoryHeader.className = 'category-header';
+            categoryHeader.innerHTML = `
+                <span>${category}</span>
+                <span class="category-count"><span class="cat-checked">0</span>/${items.length}</span>
+            `;
+
+            const itemsDiv = document.createElement('div');
+            items.forEach((item, index) => {
+                const itemId = `${category}-${index}`;
+                const isChecked = localStorage.getItem(itemId) === 'true';
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'checklist-item';
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = itemId;
+                checkbox.checked = isChecked;
+                checkbox.onchange = () => updateProgress();
+
+                const label = document.createElement('label');
+                label.htmlFor = itemId;
+                label.textContent = item;
+
+                itemDiv.appendChild(checkbox);
+                itemDiv.appendChild(label);
+                itemsDiv.appendChild(itemDiv);
+            });
+
+            categoryDiv.appendChild(categoryHeader);
+            categoryDiv.appendChild(itemsDiv);
+            container.appendChild(categoryDiv);
+        });
+
+        document.getElementById('total-count').textContent = totalItems;
+        updateProgress();
+    }
+
+    function updateProgress() {
+        let completed = 0;
+        let total = 0;
+
+        Object.keys(checklistData).forEach(category => {
+            checklistData[category].forEach((item, index) => {
+                const itemId = `${category}-${index}`;
+                total++;
+                if (document.getElementById(itemId).checked) {
+                    completed++;
+                    localStorage.setItem(itemId, 'true');
+                } else {
+                    localStorage.setItem(itemId, 'false');
+                }
+            });
+        });
+
+        document.getElementById('progress-count').textContent = completed;
+        const percentage = (completed / total) * 100;
+        document.getElementById('progress-fill').style.width = percentage + '%';
+
+        // Show completion message
+        if (completed === total && total > 0) {
+            document.getElementById('completion-message').classList.add('show');
+        } else {
+            document.getElementById('completion-message').classList.remove('show');
+        }
+
+        // Update category counters
+        document.querySelectorAll('.category').forEach((catDiv, catIndex) => {
+            const catName = Object.keys(checklistData)[catIndex];
+            const items = checklistData[catName];
+            let catCompleted = 0;
+            items.forEach((item, index) => {
+                const itemId = `${catName}-${index}`;
+                if (document.getElementById(itemId).checked) {
+                    catCompleted++;
+                }
+            });
+            const catCounter = catDiv.querySelector('.cat-checked');
+            if (catCounter) catCounter.textContent = catCompleted;
+        });
+    }
+
+    function resetChecklist() {
+        if (confirm('Reset all items? This will uncheck everything.')) {
+            Object.keys(checklistData).forEach(category => {
+                checklistData[category].forEach((item, index) => {
+                    const itemId = `${category}-${index}`;
+                    document.getElementById(itemId).checked = false;
+                    localStorage.setItem(itemId, 'false');
+                });
+            });
+            updateProgress();
+        }
+    }
+
+    function markAllComplete() {
+        Object.keys(checklistData).forEach(category => {
+            checklistData[category].forEach((item, index) => {
+                const itemId = `${category}-${index}`;
+                document.getElementById(itemId).checked = true;
+                localStorage.setItem(itemId, 'true');
+            });
+        });
+        updateProgress();
+    }
+
+    // Initialize on load
+    initChecklist();
+</script>
+```
+
+</body>
+</html>
